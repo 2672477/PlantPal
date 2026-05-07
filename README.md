@@ -209,7 +209,6 @@ The central hub acts as the processing and control unit for the entire ecosystem
 * **MicroSD Card Module**
 * **USB-C Power Input**
 * **Internal Voltage Regulation**
-* **Wireless Communication Module**
 * **RTC Module:** DS3231
 
 ---
