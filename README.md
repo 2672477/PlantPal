@@ -203,7 +203,6 @@ The central hub acts as the processing and control unit for the entire ecosystem
 * **Main Controller:** ESP32-S3
 * **Display Unit:** 6” TFT Capacitive Touchscreen
 * **Internal Mini Speaker**
-* **Buzzer**
 * **RGB LED Indicator Strip**
 * **ESP-NOW Communication**
 * **MicroSD Card Module**
