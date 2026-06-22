@@ -239,6 +239,8 @@ The device continuously updates the plant's condition without requiring any user
 PlantPal
 │
 ├── README.md
+├── Bom.csv
+├──plantpal-journal.md
 │
 └── PlantPal-main
     ├── cad
@@ -247,7 +249,7 @@ PlantPal
     ├── wiring
     ├── zine
     ├── simulation
-    └── Bom.csv
+
 ```
 
 ---
