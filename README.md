@@ -1,5 +1,17 @@
 # 🌿 PlantPal
 
+---
+
+# NOTE
+
+This project was originally started for FALLOUT and is now being transferred to Horizons with permission from both organizers.
+
+No funding was received from FALLOUT, and the project was never approved there. Since FALLOUT uses Lookout, I kindly request that project hours be evaluated based on my submitted journal entries.
+
+Thank you for your consideration.
+
+---
+
 ### Giving Plants a Voice
 
 ![PlantPal](PlantPal-main/photos/assembled_model_home.jpg)
