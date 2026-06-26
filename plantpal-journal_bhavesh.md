@@ -1,3 +1,9 @@
+# NOTE: The remaining journal entries are of my teammate, thus are not included in my journal as fallout takes both together in one.
+## Total time spend
+### FALLOUT HRS-37.9 hrs
+### HACKATIME HRS-0.9
+## TOTAL=38.8 HRS
+
 # PlantPal — Journal Export
 
 - Exported at: 2026-06-20T16:10:05Z
