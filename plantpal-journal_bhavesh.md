@@ -1,4 +1,4 @@
-# NOTE: The remaining journal entries are of my teammate, thus are not included in my journal as fallout takes both together in one.
+# NOTE: The remaining journal entries are of my teammate, thus are not included in my journal as fallout takes both together in one. Also, I have included a random project(modular_navigator) in my hackatime as 3 hrs are required before submitting. PLS DO NOT CONSIDER THOSE HRS. I DO NOT WANT TO GET FLAGGED BY @FRAUD SQUAD. I have taken permission from Horizons team to do this. Thank you!
 ## Total time spend
 ### FALLOUT HRS-37.9 hrs
 ### HACKATIME HRS-0.9
