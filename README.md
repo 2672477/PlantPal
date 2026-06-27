@@ -8,6 +8,8 @@ This project was originally started for FALLOUT and is now being transferred to 
 
 No funding was received from FALLOUT, and the project was never approved there. Since FALLOUT uses Lookout, I kindly request that project hours be evaluated based on my submitted journal entries.
 
+P.S.-PERMISSION WAS TAKEN FROM @phthallo FOR DOING IT THIS WAY.
+
 Thank you for your consideration.
 
 ---
