@@ -16,21 +16,25 @@ P.S. - Permission was taken from @phthallo for doing it this way.
 
 ![PlantPal](PlantPal-main/photos/assembled_model_home.jpg)
 
-PlantPal is a small solar-powered device that helps monitor the environment around a plant. It measures soil moisture, temperature, humidity, and light levels, then shows the plant's condition using simple emotions on a 0.96" OLED display.
+PlantPal is a small solar-powered device I built to monitor the environment around a plant.
 
-Instead of opening an app or reading graphs, I wanted something that could sit next to a plant and immediately show whether it was doing well or needed attention.
+It measures soil moisture, temperature, humidity, and light levels using four sensors. Instead of showing numbers or graphs, it displays a simple face on a 0.96" OLED screen that changes depending on how the plant is doing.
+
+The whole idea started because I thought plant monitors were a bit boring. Most of them show charts or sensor values, but I wanted something that anyone could understand in a second just by looking at it.
+
+The device is powered by a rechargeable 18650 battery, and a small solar panel charges it during the day so it can stay beside a plant without needing constant charging.
 
 ---
 
-# Why I Built This
+# Why I Built It
 
-I enjoy building embedded hardware projects, and I wanted to make something that combined electronics, firmware, CAD, and 3D printing into a single project.
+I wanted a project that combined everything I enjoy building—electronics, firmware, CAD, and 3D printing.
 
-While looking at existing plant monitors, I noticed that most of them display numbers or graphs. That works well if you understand the data, but I wanted something that anyone could understand with a quick glance.
+Originally, this started as a way to learn more about embedded systems, but as I worked on it the project slowly became something much bigger. I designed the enclosure from scratch, worked out where every component should go, created the wiring, and wrote the firmware that ties everything together.
 
-The idea behind PlantPal was simple: let the plant "react" to its surroundings instead of expecting the user to interpret sensor readings.
+While researching similar projects, I noticed that almost all of them expected the user to understand moisture percentages or temperature readings. I thought it would be more interesting if the device translated all of that into something much simpler.
 
-Along the way I also wanted to learn more about enclosure design, low-power electronics, solar charging, and integrating multiple sensors into one device.
+Rather than saying "the soil moisture is 28%," PlantPal simply tells you that the plant isn't happy.
 
 ---
 
@@ -39,11 +43,11 @@ Along the way I also wanted to learn more about enclosure design, low-power elec
 - Measures soil moisture
 - Measures temperature and humidity
 - Measures ambient light
-- Displays plant emotions on a 0.96" OLED display
+- Displays the plant's condition on a 0.96" OLED display
 - RGB LED status indicator
-- Solar-assisted charging
 - Rechargeable 18650 battery
-- ESP32 based hardware
+- Solar-assisted charging
+- ESP32-WROOM-32 based hardware
 - Custom designed 3D printed enclosure
 
 ---
@@ -70,96 +74,87 @@ Along the way I also wanted to learn more about enclosure design, low-power elec
 
 ![Exploded Side](PlantPal-main/photos/exploded_view_side.jpg)
 
+The exploded renders helped me check that every component had enough space before printing the enclosure. They also made it much easier to plan the assembly order.
+
 ---
 
 # How It Works
 
-PlantPal constantly checks four things around the plant:
+PlantPal reads four sensors:
 
-- Soil moisture
-- Temperature
-- Humidity
-- Light intensity
+- Capacitive Soil Moisture Sensor
+- AHT20 Temperature Sensor
+- AHT20 Humidity Sensor
+- BH1750 Light Sensor
 
-The ESP32 reads all of the sensors and compares the values with preset ranges stored in the firmware.
+Every few seconds the ESP32 reads all of the sensors and compares the values with preset ranges inside the firmware.
 
-Instead of showing raw values on the display, the firmware chooses an emotion that represents the plant's current condition. For example, if the soil is too dry the plant will look unhappy, while healthy conditions display a happy face.
+Instead of displaying raw sensor readings, the firmware decides which expression best matches the current condition of the plant. Healthy conditions show a happy face, while dry soil or poor lighting changes the expression to let the user know something needs attention.
 
-The RGB LED also changes status so the condition can be seen from a distance.
+The RGB LED shows the same status, making it easy to tell how the plant is doing without even looking at the display.
 
-Power comes from a rechargeable 18650 battery. During the day, the attached solar panel recharges the battery through the CN3065 charging circuit, allowing the device to run without frequent charging.
+Power comes from a rechargeable 18650 battery. During the day the attached solar panel recharges the battery through the CN3065 charging board so the device can keep running outdoors or on a windowsill.
 
 ---
 
 # CAD Files
 
+Designing the enclosure took several iterations before everything fit properly.
+
+The battery, ESP32, charging board, display, and sensors all needed dedicated mounting locations while still leaving enough room for wiring and assembly.
+
 ## Complete Assembly
 
 - [STL File](PlantPal-main/cad/BODY_WITH_ELECTRONICS/Body_electronics.stl)
+
 - [STEP File](PlantPal-main/cad/BODY_WITH_ELECTRONICS/Body_electronics.step)
 
 ## Individual Parts
 
-The enclosure is split into individual printable parts, available here:
+All printable enclosure components are available in:
 
 ```text
 PlantPal-main/cad/PARTS
 ```
 
-The complete Fusion 360 design and STEP files are included so the enclosure can be modified or reused.
+The repository also includes the source CAD files so the enclosure can be modified or improved in the future.
 
 ---
 
 # Hardware
 
-PlantPal is built around an ESP32 and combines sensing, power management, and display hardware inside a single enclosure that I designed specifically for this project.
+The electronics are built around an ESP32-WROOM-32. Everything fits inside the custom enclosure, including the battery, charging circuit, sensors, display, and wiring.
 
 | Component | Purpose |
 | ------------------------------- | --------------------------------- |
 | ESP32-WROOM-32 | Main Controller |
-| Capacitive Soil Moisture Sensor | Soil Moisture Monitoring |
-| AHT20 | Temperature & Humidity Monitoring |
-| BH1750 | Light Intensity Monitoring |
-| 0.96" OLED Display | Plant Emotion Display |
-| RGB LED | Visual Status Indicator |
+| Capacitive Soil Moisture Sensor | Measures Soil Moisture |
+| AHT20 | Measures Temperature & Humidity |
+| BH1750 | Measures Ambient Light |
+| 0.96" OLED Display | Displays Plant Emotion |
+| RGB LED | Quick Status Indicator |
 | 18650 Battery | Main Power Source |
-| CN3065 Solar Charger | Solar Battery Charging |
-| HT7333-A LDO Regulator | 3.3V Voltage Regulation |
-| 5V 2W Solar Panel | Renewable Power Source |
-| Custom 3D Printed Enclosure | Mechanical Housing |
+| CN3065 Solar Charger | Charges the Battery from the Solar Panel |
+| HT7333-A LDO Regulator | Provides Stable 3.3V Power |
+| 5V 2W Solar Panel | Renewable Energy Source |
+| Custom 3D Printed Enclosure | Holds All Components |
 
 ---
 
 # Bill of Materials
 
-| Component | Cost (USD) |
-| ------------------------------- | ---------: |
-| ESP32-WROOM-32 Dev Board | $4.06 |
-| Capacitive Soil Moisture Sensor | $0.65 |
-| AHT20 | $1.34 |
-| BH1750 | $1.42 |
-| OLED Display | $1.69 |
-| 18650 Battery | $0.73 |
-| Battery Holder | $0.17 |
-| CN3065 Solar Charger | $0.88 |
-| HT7333-A LDO Regulator | $0.48 |
-| 470uF Capacitor | $0.18 |
-| Resistors | $0.24 |
-| Solar Panel | $0.98 |
-| Jumper Wires | $1.39 |
-| Heat Set Inserts | $0.25 |
-| M3 Screws | $0.28 |
-| 3D Printed Enclosure | $3.50 |
-| **Total** | **$18.39** |
-
-A complete bill of materials with supplier links is available here:
+The complete list of parts used for this project, including supplier links and prices, is available here:
 
 - [Bom.csv](PlantPal-main/Bom.csv)
+
+The total hardware cost is approximately **$18.39 USD**, excluding tools such as a soldering iron and the 3D printer used to manufacture the enclosure.
 
 ---
 # Wiring Diagram
 
-PlantPal uses a custom wiring setup rather than a PCB. I created the schematic in KiCad before assembling the electronics to make sure every connection was planned out and easy to troubleshoot.
+I didn't design a PCB for this version of PlantPal, so all of the electronics are connected using hand-wired connections.
+
+Before assembling everything, I first recreated the circuit in KiCad. Doing this made it much easier to plan the wiring, check power connections, and avoid mistakes during assembly.
 
 ![Wiring Diagram](PlantPal-main/wiring/Wiring_Diagram.jpg)
 
@@ -173,16 +168,18 @@ The wiring includes:
 - RGB LED
 - CN3065 Solar Charging Circuit
 - HT7333-A Voltage Regulator
-- 18650 Battery and Battery Holder
+- 18650 Battery
 - Solar Panel
 
-The complete wiring diagram is included in this repository so the project can be recreated without guessing any connections.
+The complete wiring diagram is included in this repository so anyone rebuilding the project can follow the exact connections.
 
 ---
 
 # Building PlantPal
 
-This project was designed so that anyone with the required parts, a 3D printer, and basic soldering experience should be able to build it by following the files in this repository.
+One of my goals while designing PlantPal was to make it possible for someone else to build it without having to guess how everything fits together.
+
+This repository includes the CAD files, firmware, wiring diagram, BOM, and assembly renders that I used while building it.
 
 ---
 
@@ -194,23 +191,23 @@ Print all enclosure parts from:
 PlantPal-main/cad/PRINTING PARTS
 ```
 
-The enclosure was designed specifically around the electronics used in this project, so every component has its own mounting location.
+The enclosure was designed specifically around the components used in this project. Instead of making the electronics fit inside an existing box, I designed the enclosure around the battery, ESP32, display, charging board, and wiring.
 
-After printing, install the M3 brass heat-set inserts before starting assembly.
+After printing the parts, install the M3 brass heat-set inserts before beginning assembly.
 
 ---
 
-## 2. Gather the Components
+## 2. Prepare the Electronics
 
-Use the BOM as a checklist and collect all required parts.
+Use the BOM as a checklist and gather all of the required parts.
 
-Main components include:
+Main components:
 
 - ESP32-WROOM-32
 - Capacitive Soil Moisture Sensor
 - AHT20
 - BH1750
-- 0.96" OLED Display
+- OLED Display
 - RGB LED
 - CN3065 Solar Charger
 - HT7333-A Regulator
@@ -218,48 +215,46 @@ Main components include:
 - Battery Holder
 - Solar Panel
 
-Before soldering everything together, it's a good idea to test each module individually.
+Before soldering everything together, I tested each sensor individually to make sure it worked correctly. This made debugging much easier later on.
 
 ---
 
-## 3. Assemble the Electronics
+## 3. Assemble the Hardware
 
-Mount each component inside the enclosure.
+Start mounting the electronics inside the enclosure.
 
-The enclosure includes dedicated mounting positions for:
+The enclosure includes dedicated mounting locations for:
 
 - ESP32
-- OLED Display
 - Battery Holder
-- Charging Circuit
+- OLED Display
+- Charging Board
 - Voltage Regulator
 
-Once everything is in place, begin routing the wires according to the wiring diagram.
-
-I tried to keep the wiring as neat as possible so the enclosure can still be opened later if repairs or upgrades are needed.
+I spent quite a bit of time moving components around until everything fit comfortably. The final layout also leaves enough room to route the wires neatly and reopen the enclosure later if something needs replacing.
 
 ---
 
-## 4. Wire the Circuit
+## 4. Complete the Wiring
 
-Use the wiring diagram as the reference while soldering.
+Use the wiring diagram above while soldering the connections.
 
-Important connections include:
+The main connections are:
 
-- I²C connections for the OLED, AHT20, and BH1750
-- Soil moisture sensor input
+- I²C bus for the OLED, AHT20, and BH1750
+- Soil moisture sensor signal
 - RGB LED outputs
 - Battery power
 - Solar charging circuit
 - 3.3V power distribution
 
-After completing the wiring, double-check every connection before connecting the battery.
+Before connecting the battery, I checked every connection with a multimeter to make sure there weren't any shorts.
 
 ---
 
 ## 5. Upload the Firmware
 
-The firmware is located in:
+The firmware can be found here:
 
 ```text
 PlantPal-main/firmware
@@ -267,49 +262,40 @@ PlantPal-main/firmware
 
 Upload it using Arduino IDE or PlatformIO.
 
-The firmware is responsible for:
+The firmware:
 
-- Reading all sensors
-- Calculating the plant's condition
-- Displaying emotions on the OLED
-- Controlling the RGB LED
-- Managing the update cycle
+- Reads all sensors
+- Calculates the plant's condition
+- Updates the OLED display
+- Controls the RGB LED
+- Repeats the process continuously while the device is running
 
 ---
 
 ## 6. Final Assembly
 
-After confirming that the electronics work correctly:
+Once everything was tested, I closed the enclosure using the M3 screws.
 
-- Secure every component using the mounting points
-- Route the wires through the built-in channels
-- Close the enclosure
-- Tighten the M3 screws
+The battery, charging board, regulator, ESP32, display, and wiring are all secured inside the enclosure so nothing moves around during normal use.
 
-The finished assembly should match the renders shown earlier in this README.
+The assembled device should look similar to the renders shown earlier in this README.
 
 ---
 
-## 7. Place the Device
+## 7. Using PlantPal
 
-Insert the soil moisture sensor into the soil and position the solar panel where it receives sunlight.
-
-After a few seconds the OLED should begin showing the plant's current condition.
-
----
-
-# Using PlantPal
-
-Using PlantPal is straightforward.
+Using the device is simple.
 
 1. Insert the moisture sensor into the soil.
-2. Place the device beside the plant.
+2. Place PlantPal next to the plant.
 3. Make sure the solar panel receives sunlight during the day.
-4. Turn on the device.
-5. Wait a few seconds for the first sensor readings.
+4. Turn the device on.
+5. Wait a few seconds while the sensors take their first readings.
 
-The OLED will display the current emotion of the plant, while the RGB LED provides a quick visual indication of its condition.
+After that, everything runs automatically.
 
-The device continues monitoring automatically, so there is nothing else the user needs to do after setup.
+The OLED changes expression depending on the plant's condition, while the RGB LED gives a quick indication that can be seen from across the room.
+
+There's no app to install or settings to configure. Once it's powered on, it simply keeps checking the plant and updating the display.
 
 ---
