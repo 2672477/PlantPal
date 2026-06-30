@@ -1,7 +1,8 @@
 ## NOTE: 
-The remaining journal entries are of my teammate, thus are not included in my journal as fallout takes both together in one. These are all my hrs/journals. Also, I have included a random project(modular_navigator) in my hackatime as 3 hrs are required before submitting. PLS DO NOT CONSIDER THOSE HRS. I DO NOT WANT TO GET FLAGGED BY @FRAUD SQUAD. I have taken permission from Horizons team to do this. Thank you!
-This project was originally started for fallout and is now being transferred to Horizons with permission from both organizers.
-No funding was received from Stasis, and the project was never approved there. Since FAllOUT uses LOOKOUT, I kindly request that project hours be evaluated based on my submitted journal entries.
+The remaining journal entries are of my teammate, thus are not included in my journal as fallout takes both together in one. These are all my hrs/journals. I have taken permission from Horizons team to do this.
+Thank you!
+This project was originally started for Fallout and is now being transferred to Horizons with permission from both organisers.
+No funding was received from Stasis, and the project was never approved there. Since Fallout uses LOOKOUT, I kindly request that project hours be evaluated based on my submitted journal entries.
 Thank you for your consideration.
 ## Total time spend
 ### FALLOUT HRS-37.9 hrs
