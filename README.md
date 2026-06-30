@@ -85,7 +85,7 @@ PlantPal uses four sensors to monitor the plant's surroundings:
 
 Every few seconds, the ESP32 reads all four sensors and compares the values against predefined thresholds in the firmware.
 
-The firmware then chooses an expression that represents the plant's current condition. For example, dry soil or poor lighting will display an unhappy expression, while good growing conditions display a happy one.
+Based on those readings, the firmware selects an expression that reflects the plant's overall condition. For example, dry soil or poor lighting will display an unhappy expression, while good growing conditions display a happy one.
 
 The RGB LED also changes colour to match the current status, making it easy to check the plant from a distance.
 
@@ -171,9 +171,7 @@ Everything shown in the diagram matches the hardware used in the finished build.
 
 # Building PlantPal
 
-This repository contains everything needed to rebuild PlantPal, including the CAD files, firmware, wiring diagram, BOM, and assembly renders.
-
-The general assembly process is described below.
+This repository includes the firmware, CAD files, wiring diagram, BOM, and assembly resources needed to recreate the project.
 
 ---
 
@@ -187,7 +185,7 @@ PlantPal-main/cad/PRINTING PARTS
 
 After printing, install the M3 brass heat-set inserts into the enclosure.
 
-The enclosure was designed specifically for the components used in this project, so every part has its own mounting location.
+The enclosure is designed around the components used in this build, making assembly straightforward while still allowing access for maintenance.
 
 ---
 
@@ -209,7 +207,7 @@ Main components:
 - Battery Holder
 - Solar Panel
 
-Before starting the final assembly, I tested each sensor individually to make sure it was working correctly. Finding problems is much easier before everything is mounted inside the enclosure.
+I tested each sensor individually before final assembly to avoid troubleshooting after everything was mounted.
 
 ---
 
@@ -225,7 +223,7 @@ The enclosure includes mounting locations for:
 - Charging Board
 - Voltage Regulator
 
-Getting everything to fit took a few revisions of the internal layout. The final version leaves enough room for the wiring while still making it possible to open the enclosure later if a component needs to be replaced.
+Fitting everything inside the enclosure took several layout revisions. The final design leaves enough room for wiring and can still be opened later if a component needs replacing.
 
 ---
 
@@ -242,7 +240,7 @@ Main connections include:
 - Solar charging circuit
 - 3.3V power rail
 
-Before connecting the battery, check every power connection and verify that there are no shorts.
+Double-check all power connections and verify there are no shorts before connecting the battery.
 
 ---
 
@@ -268,17 +266,10 @@ Once uploaded, the ESP32 starts monitoring automatically.
 
 ---
 
-## 6. Final Assembly
-
-After confirming that everything was working, secure the electronics inside the enclosure using the mounting points and close the enclosure with the M3 screws.
-
-The completed assembly should look like the renders shown earlier in this README.
-
----
 
 # Using PlantPal
 
-Using PlantPal only takes a few steps.
+After startup, the device continuously monitors the plant and updates the display every few seconds.
 
 1. Insert the soil moisture sensor into the plant pot.
 2. Place the device where the solar panel can receive sunlight.
