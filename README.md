@@ -95,9 +95,7 @@ Power is supplied by a rechargeable 18650 battery. A CN3065 solar charging board
 
 # CAD Files
 
-One of the biggest parts of this project was designing an enclosure that could fit every component while still being easy to assemble.
-
-The battery, ESP32, display, charging board, sensors, and wiring all have dedicated mounting positions inside the enclosure.
+Designing the enclosure took several iterations because I needed to fit the battery, ESP32, display, charging circuit, sensors, and wiring into a compact space while keeping the device easy to assemble and service.
 
 ## Complete Assembly
 
