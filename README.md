@@ -150,6 +150,7 @@ The complete list of parts used for this project, including supplier links and p
 The total hardware cost is approximately **$18.39 USD**, excluding tools such as a soldering iron and the 3D printer used to manufacture the enclosure.
 
 ---
+
 # Wiring Diagram
 
 I didn't design a PCB for this version of PlantPal, so all of the electronics are connected using hand-wired connections.
