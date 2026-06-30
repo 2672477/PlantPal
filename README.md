@@ -83,7 +83,7 @@ PlantPal uses four sensors to monitor the plant's surroundings:
 - AHT20 Humidity Sensor
 - BH1750 Light Sensor
 
-Every few seconds the ESP32 reads each sensor and compares the readings with preset values stored in the firmware.
+Every few seconds, the ESP32 reads all four sensors and compares the values against predefined thresholds in the firmware.
 
 The firmware then chooses an expression that represents the plant's current condition. For example, dry soil or poor lighting will display an unhappy expression, while good growing conditions display a happy one.
 
