@@ -8,6 +8,8 @@ This project was originally started for FALLOUT and is now being transferred to 
 
 No funding was received from FALLOUT, and the project was never approved there. Since FALLOUT uses Lookout, I kindly request that project hours be evaluated based on my submitted journal entries.
 
+AI tools were used during the initial planning and brainstorming phase of this project. All hardware design, firmware development, CAD modeling, assembly, testing, and documentation reflect own work.
+
 P.S. - Permission was taken from @phthallo for doing it this way.
 
 ---
